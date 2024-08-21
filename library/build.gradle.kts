@@ -14,7 +14,7 @@ kotlin.sourceSets.all {
     languageSettings.optIn("kotlin.RequiresOptIn")
 }
 
-val javaVersionEnum: JavaVersion by rootProject.extra
+val javaVersionEnum: JavaVersion = JavaVersion.VERSION_21
 
 kotlin {
     jvmToolchain(javaVersionEnum.toString().toInt())
@@ -79,7 +79,7 @@ kotlin {
                 api(compose.material3)
                 api(compose.runtime)
                 api(compose.ui)
-                api(libs.kotlin)
+                api("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
             }
         }
 
@@ -143,10 +143,8 @@ android {
     namespace = "dev.zwander.compose.alertdialog"
 
     compileOptions {
-        val javaVersionEnum: JavaVersion by rootProject.extra
         sourceCompatibility = javaVersionEnum
         targetCompatibility = javaVersionEnum
-        isCoreLibraryDesugaringEnabled = true
     }
 
     buildFeatures {
@@ -155,10 +153,6 @@ android {
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
-
-    dependencies {
-        coreLibraryDesugaring(libs.desugar.jdk.libs)
-    }
 }
 
 tasks.withType<Copy> {
