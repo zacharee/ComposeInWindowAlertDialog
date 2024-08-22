@@ -25,5 +25,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SamloaderKotlin"
+rootProject.name = "ComposeInWindowAlertDialog"
 include(":library")
