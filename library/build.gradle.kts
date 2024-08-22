@@ -1,11 +1,12 @@
-import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.compose)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.maven.publish)
 }
 
 group = "dev.zwander.compose.alertdialog"
@@ -79,7 +80,7 @@ kotlin {
                 api(compose.material3)
                 api(compose.runtime)
                 api(compose.ui)
-                api("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+                api(libs.kotlin.stdlib)
             }
         }
 

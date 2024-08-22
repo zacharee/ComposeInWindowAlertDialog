@@ -1,13 +1,15 @@
 [versions]
 android-gradle = "8.5.2"
 compose = "1.7.0-alpha03"
-kotlin = "2.0.20-358"
+kotlin = "2.0.10"
+mavenPublish = "0.29.0"
 
 [libraries]
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 
 [plugins]
 android-library = { id = "com.android.library", version.ref = "android-gradle" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }
