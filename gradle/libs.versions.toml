@@ -1,7 +1,7 @@
 [versions]
-android-gradle = "8.5.2"
-compose = "1.7.0-alpha03"
-kotlin = "2.0.10"
+android-gradle = "8.7.3"
+compose = "1.8.0+dev1993"
+kotlin = "2.1.0"
 mavenPublish = "0.29.0"
 
 [libraries]
