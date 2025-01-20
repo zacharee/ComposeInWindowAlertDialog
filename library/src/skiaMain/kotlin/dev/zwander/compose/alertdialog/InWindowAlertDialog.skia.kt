@@ -21,6 +21,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContent
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.onClick
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -95,6 +97,8 @@ internal actual fun PlatformAlertDialog(
     }
 
     if (showing || showingForAnimation) {
+        val scrollState = rememberScrollState()
+
         Popup(
             alignment = Alignment.Center,
             properties = properties,
@@ -120,7 +124,8 @@ internal actual fun PlatformAlertDialog(
                         }
                     }
                     .focusable(true)
-                    .focusRequester(focusRequester),
+                    .focusRequester(focusRequester)
+                    .verticalScroll(scrollState),
                 contentAlignment = Alignment.Center,
             ) {
                 with(LocalDensity.current) {
