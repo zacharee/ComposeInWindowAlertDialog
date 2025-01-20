@@ -26,4 +26,4 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ComposeInWindowAlertDialog"
-include(":library")
+include(":library", ":sample")

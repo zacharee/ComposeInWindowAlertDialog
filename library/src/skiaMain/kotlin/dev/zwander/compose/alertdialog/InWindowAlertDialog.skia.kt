@@ -21,8 +21,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContent
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.onClick
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -97,8 +95,6 @@ internal actual fun PlatformAlertDialog(
     }
 
     if (showing || showingForAnimation) {
-        val scrollState = rememberScrollState()
-
         Popup(
             alignment = Alignment.Center,
             properties = properties,
@@ -110,9 +106,11 @@ internal actual fun PlatformAlertDialog(
                     .onClick { onDismissRequest() }
                     .padding(
                         start = safeAreaStart + windowDecorations.left,
-                        top = safeAreaInsets.calculateTopPadding().takeIf { it > 0.dp } ?: (16.dp + windowDecorations.bottom),
+                        top = safeAreaInsets.calculateTopPadding().takeIf { it > 0.dp }
+                            ?: (16.dp + windowDecorations.bottom),
                         end = safeAreaEnd + windowDecorations.right,
-                        bottom = safeAreaInsets.calculateBottomPadding().takeIf { it > 0.dp } ?: (16.dp + windowDecorations.top),
+                        bottom = safeAreaInsets.calculateBottomPadding().takeIf { it > 0.dp }
+                            ?: (16.dp + windowDecorations.top),
                     )
                     .alpha(alpha)
                     .onPreviewKeyEvent {
@@ -124,8 +122,7 @@ internal actual fun PlatformAlertDialog(
                         }
                     }
                     .focusable(true)
-                    .focusRequester(focusRequester)
-                    .verticalScroll(scrollState),
+                    .focusRequester(focusRequester),
                 contentAlignment = Alignment.Center,
             ) {
                 with(LocalDensity.current) {
@@ -134,7 +131,8 @@ internal actual fun PlatformAlertDialog(
                         modifier.then(
                             Modifier.widthIn(
                                 max = minOf(
-                                    constraints.maxWidth.toDp() - (32.dp.takeIf { safeAreaStart <= 0.dp && safeAreaEnd <= 0.dp } ?: 0.dp),
+                                    constraints.maxWidth.toDp() - (32.dp.takeIf { safeAreaStart <= 0.dp && safeAreaEnd <= 0.dp }
+                                        ?: 0.dp),
                                     maxWidth,
                                 )
                             ).onClick {
