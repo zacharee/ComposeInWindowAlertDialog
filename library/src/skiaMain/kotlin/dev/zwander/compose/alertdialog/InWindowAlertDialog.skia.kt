@@ -62,6 +62,7 @@ internal actual fun PlatformAlertDialog(
     contentColor: Color,
     maxWidth: Dp,
     windowDecorations: DpRect,
+    contentsScrollable: Boolean,
 ) {
     val alpha by animateFloatAsState(
         targetValue = if (showing) 1f else 0f,
@@ -127,8 +128,8 @@ internal actual fun PlatformAlertDialog(
             ) {
                 with(LocalDensity.current) {
                     AlertDialogContents(
-                        buttons,
-                        modifier.then(
+                        buttons = buttons,
+                        modifier = modifier.then(
                             Modifier.widthIn(
                                 max = minOf(
                                     constraints.maxWidth.toDp() - (32.dp.takeIf { safeAreaStart <= 0.dp && safeAreaEnd <= 0.dp }
@@ -139,11 +140,12 @@ internal actual fun PlatformAlertDialog(
                                 // To prevent the Box's onClick consuming clicks on the dialog itself.
                             }.animateContentSize(),
                         ),
-                        title,
-                        text,
-                        shape,
-                        backgroundColor,
-                        contentColor,
+                        title = title,
+                        text = text,
+                        shape = shape,
+                        backgroundColor = backgroundColor,
+                        contentColor = contentColor,
+                        contentsScrollable = contentsScrollable,
                     )
                 }
             }

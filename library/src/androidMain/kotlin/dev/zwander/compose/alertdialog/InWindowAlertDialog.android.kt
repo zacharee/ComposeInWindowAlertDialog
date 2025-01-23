@@ -34,6 +34,7 @@ internal actual fun PlatformAlertDialog(
     contentColor: Color,
     maxWidth: Dp,
     windowDecorations: DpRect,
+    contentsScrollable: Boolean,
 ) {
     val density = LocalDensity.current
 
@@ -53,15 +54,16 @@ internal actual fun PlatformAlertDialog(
                 )
 
                 AlertDialogContents(
-                    buttons,
-                    modifier.imePadding()
+                    buttons = buttons,
+                    modifier = modifier.imePadding()
                         .systemBarsPadding()
                         .width(width),
-                    title,
-                    text,
-                    shape,
-                    backgroundColor,
-                    contentColor,
+                    title = title,
+                    text = text,
+                    shape = shape,
+                    backgroundColor = backgroundColor,
+                    contentColor = contentColor,
+                    contentsScrollable = contentsScrollable,
                 )
             }
         }

@@ -46,6 +46,7 @@ fun InWindowAlertDialog(
     contentColor: Color = contentColorFor(backgroundColor),
     maxWidth: Dp = 400.dp,
     windowDecorations: DpRect = LocalWindowDecorations.current,
+    contentsScrollable: Boolean = true,
 ) {
     PlatformAlertDialog(
         showing = showing,
@@ -59,6 +60,7 @@ fun InWindowAlertDialog(
         contentColor = contentColor,
         maxWidth = maxWidth,
         windowDecorations = windowDecorations,
+        contentsScrollable = contentsScrollable,
     )
 }
 
@@ -78,6 +80,7 @@ internal expect fun PlatformAlertDialog(
     contentColor: Color,
     maxWidth: Dp,
     windowDecorations: DpRect = DpRect(0.dp, 0.dp, 0.dp, 0.dp),
+    contentsScrollable: Boolean,
 )
 
 @Composable
@@ -89,6 +92,7 @@ internal fun AlertDialogContents(
     shape: Shape = RoundedCornerShape(8.dp),
     backgroundColor: Color,
     contentColor: Color,
+    contentsScrollable: Boolean,
 ) {
     Surface(
         shape = shape,
@@ -115,7 +119,11 @@ internal fun AlertDialogContents(
                     modifier = Modifier
                         .fillMaxWidth()
                         .weight(1f, false)
-                        .verticalScroll(rememberScrollState()),
+                        .then(if (contentsScrollable) {
+                            Modifier.verticalScroll(rememberScrollState())
+                        } else {
+                            Modifier
+                        }),
                 ) {
                     it()
                 }
