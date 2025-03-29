@@ -1,8 +1,8 @@
 [versions]
-android-gradle = "8.8.0"
-compose = "1.8.0-alpha02"
-kotlin = "2.1.0"
-mavenPublish = "0.29.0"
+android-gradle = "8.9.1"
+compose = "1.8.0+dev2278"
+kotlin = "2.1.10"
+mavenPublish = "0.31.0"
 
 [libraries]
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
