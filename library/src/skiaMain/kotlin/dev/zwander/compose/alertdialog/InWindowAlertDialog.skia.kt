@@ -108,10 +108,10 @@ internal actual fun PlatformAlertDialog(
                     .padding(
                         start = safeAreaStart + windowDecorations.left,
                         top = safeAreaInsets.calculateTopPadding().takeIf { it > 0.dp }
-                            ?: (16.dp + windowDecorations.bottom),
+                            ?: (16.dp + windowDecorations.top),
                         end = safeAreaEnd + windowDecorations.right,
                         bottom = safeAreaInsets.calculateBottomPadding().takeIf { it > 0.dp }
-                            ?: (16.dp + windowDecorations.top),
+                            ?: (16.dp + windowDecorations.bottom),
                     )
                     .alpha(alpha)
                     .onPreviewKeyEvent {
